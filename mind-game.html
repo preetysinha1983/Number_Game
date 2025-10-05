@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mind Number Game</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #333;
+    }
+    .instructions {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 60px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #006400;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Mind Number Game 🎉</h1>
+  <div class="instructions">
+    <p>1. Think of a number between <strong>11 and 99</strong>.</p>
+    <p>2. Add the two digits of your number.</p>
+    <p>3. Subtract that sum from your original number.</p>
+    <p>4. From the result, enter <strong>one digit</strong> below.</p>
+  </div>
+
+  <input type="number" id="digitInput" min="0" max="9" />
+  <br>
+  <button onclick="revealDigit()">Reveal Other Digit</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function revealDigit() {
+      const digitMap = {
+        0: 9, 1: 8, 2: 7, 3: 6, 4: 5,
+        5: 4, 6: 3, 7: 2, 8: 1, 9: 0
+      };
+
+      const input = document.getElementById("digitInput").value;
+      const num = parseInt(input);
+
+      const resultDiv = document.getElementById("result");
+
+      if (digitMap.hasOwnProperty(num)) {
+        resultDiv.textContent = `🧠 The other digit is: ${digitMap[num]}`;
+      } else {
+        resultDiv.textContent = "⚠️ Please enter a digit between 0 and 9.";
+      }
+    }
+  </script>
+</body>
+</html>
